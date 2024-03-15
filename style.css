@@ -1,0 +1,39 @@
+* {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+img {
+    max-width: 15%;
+    padding: 1rem;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+}
+
+#highscore {
+    display: flex;
+    justify-content: flex-end;
+    margin: 1rem;
+}
+
+#score {
+    display: flex;
+    justify-content: center;
+}
+
+.knoppen {
+    display: flex;
+    justify-content: center;
+}
+
+.notShowText {
+    display: none;
+}
+
+.showText {
+    display: block;
+    display: flex;
+    justify-content: center;
+}
