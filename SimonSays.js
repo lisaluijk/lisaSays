@@ -2,7 +2,6 @@
 
 // knoppen in variabelen stoppen
 const startKnop = document.querySelector('#start');
-const testKnop = document.querySelector('#test');
 const opnieuwKnop = document.querySelector('#opnieuw');
 
 const rozeKnop = document.querySelector('#roze');
@@ -45,8 +44,8 @@ function verhoogScore() {
     scoreVeld.textContent = score;
 }
 
-function verhoogHighcore() {
-    highscore++;
+function updateHighcore() {
+    highscore = score;
     highscoreVeld.textContent = highscore;
 }
 
@@ -86,11 +85,19 @@ function nieuweRonde() {
     }
 }
 
+// als de speler nog een keer wil proberen wordt alles hier gereset voor een volgende keer, ook wordt eventueel de highscore aangepast
 function opnieuwProberen() {
-    console.log("opnieuw proberen wordt nu gedaan");
-    resetScore();
+  
     testUitslag = 2;
     verliezenTekst.remove("showText");
+    spelerVolgorde = [];
+    computerVolgorde = [];
+
+    if (score > highscore) {
+        updateHighcore();
+    }
+    resetScore();
+
 }
 
 
@@ -228,8 +235,6 @@ paarseKnop.addEventListener('click', spelerPaarsDrukIn);
 geleKnop.addEventListener('click', spelerGeelDrukIn);
 
 
-
-//testKnop.addEventListener('click', nieuweRonde);
 startKnop.addEventListener('click', nieuweRonde);
 opnieuwKnop.addEventListener('click', opnieuwProberen);
 
