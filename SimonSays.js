@@ -9,7 +9,7 @@ const blauweKnop = document.querySelector('#blauw');
 const paarseKnop = document.querySelector('#paars');
 const geleKnop = document.querySelector('#geel');
 
-// html element in variabele stoppen
+// html element verliezen in variabele stoppen en class toevoegen
 const verliezenTekst = document.querySelector('.verloren').classList;
 verliezenTekst.add("notShowText");
 
@@ -26,7 +26,7 @@ const blauweAudio = new Audio('audios/blauwe_audio.mp3');
 const paarseAudio = new Audio('audios/paarse_audio.mp3');
 const geleAudio = new Audio('audios/gele_audio.mp3');
 
-// nieuwe ronde
+// variabelen voor een nieuwe ronde
 let nieuweWaarde = 0;
 let nuAfspelen = 0;
 
@@ -55,6 +55,7 @@ function resetScore() {
 }
 
 // laat de volgorde van de array afspelen
+// roze =1, blauw =2, paars =3, geel =4
 function speelArrayAf(tijd) {
     if (nuAfspelen == 1){
         setTimeout(computerRozeDrukIn, tijd);
@@ -70,7 +71,7 @@ function speelArrayAf(tijd) {
 // wat er gebeurt bij een nieuwe ronde
 function nieuweRonde() {
 
-    // nieuwe toevoging aan de reeks (extra knop om te onthouden)
+    // nieuwe toevoeging aan de reeks (extra knop om te onthouden)
     nieuweWaarde = Math.ceil(Math.random()*4);
     computerVolgorde.push(nieuweWaarde);
 
@@ -97,26 +98,17 @@ function opnieuwProberen() {
         updateHighcore();
     }
     resetScore();
-
 }
 
-
-// dit kan makkelijker dus moet ik nog aanpassen, werken met i< lengte en lengte is gewoon de length er is geen reden om een nieuwe array aan te maken eigenlijk
 // de functie die het antwoord controleert, wordt aangeroepen nadat de gebruiker een knop in drukt
 function controleerAntwoord() {
 
-    // de lengte van de computervolgorde array verkorten als de speler nog niet alle knoppen heeft ingedrukt
+    // tussendoor controleren
     if (computerVolgorde.length != spelerVolgorde.length) {
-        let lengte = spelerVolgorde.length;
-        let korteComputerVolgorde =  [];
-
-        for (let i = 0; i < lengte; i++) {
-            korteComputerVolgorde.push(computerVolgorde[i]);
-        }
-
+        
         // kijken of de volgorde klopt
-        for (let i = 0; i < lengte; i++) {
-            if (korteComputerVolgorde[i] === spelerVolgorde[i]) {
+        for (let i = 0; i < spelerVolgorde.length; i++) {
+            if (computerVolgorde[i] === spelerVolgorde[i]) {
                 testUitslag = 1;
             } else {
                 testUitslag = 0;
@@ -178,7 +170,6 @@ function computerBlauwDrukIn() {
     blauweKnop.src = 'images/blauwe-knop-gedrukt.png';
     blauweAudio.play();
     setTimeout(blauwDrukUit, 225);
-
 }
 
 function computerPaarsDrukIn() { 
@@ -236,7 +227,3 @@ geleKnop.addEventListener('click', spelerGeelDrukIn);
 
 startKnop.addEventListener('click', nieuweRonde);
 opnieuwKnop.addEventListener('click', opnieuwProberen);
-
-
-
-
