@@ -234,7 +234,6 @@ blauweKnop.addEventListener('click', spelerBlauwDrukIn);
 paarseKnop.addEventListener('click', spelerPaarsDrukIn);
 geleKnop.addEventListener('click', spelerGeelDrukIn);
 
-
 startKnop.addEventListener('click', nieuweRonde);
 opnieuwKnop.addEventListener('click', opnieuwProberen);
 

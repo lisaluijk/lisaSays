@@ -12,6 +12,29 @@ h1 {
     justify-content: center;
 }
 
+button {
+    padding: 15px 25px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: orange;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #ff7300;
+}
+
+button:hover {background-color: #ffbe44}
+
+button:active {
+  background-color:#ffbe44;
+  box-shadow: 0 5px #ff7300;
+  transform: translateY(4px);
+}
+
+
 #highscore {
     display: flex;
     justify-content: flex-end;
